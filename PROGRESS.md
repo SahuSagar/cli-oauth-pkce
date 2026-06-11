@@ -9,8 +9,8 @@ This file tracks the status of all tasks in the cli-oauth-pkce project. Each row
 
 | Task | Title | Status | Priority | Est. Hours | Dependencies | Notes |
 |------|-------|--------|----------|------------|--------------|-------|
-| TASK_1 | Project Setup & Monorepo Structure | `TODO` | **HIGH** | 1.5 | None | Blocking: all other tasks |
-| TASK_2 | Implement PKCE Utilities | `TODO` | **HIGH** | 1.5 | TASK_1 | Core security logic; used by server + CLI |
+| TASK_1 | Project Setup & Monorepo Structure | `DONE` | **HIGH** | 1.5 | None | Committed: 945bec1 |
+| TASK_2 | Implement PKCE Utilities | `DONE` | **HIGH** | 1.5 | TASK_1 | Committed: 4843b73 |
 | TASK_3 | Auth Code Store & JWT Utilities | `TODO` | **HIGH** | 2 | TASK_1 | Blocking: TASK_5, TASK_6 |
 | TASK_4 | Server Authorization Endpoint | `TODO` | **HIGH** | 2 | TASK_1, TASK_3 | Blocking: consent page flow |
 | TASK_5 | Server Approval Endpoint | `TODO` | **HIGH** | 1.5 | TASK_1, TASK_3, TASK_4 | Blocking: TASK_6 |
@@ -80,5 +80,7 @@ This file tracks the status of all tasks in the cli-oauth-pkce project. Each row
 ## Recent Updates
 
 - Created initial task breakdown (2026-06-11)
-- All tasks in `TODO` state, ready to begin implementation
+- TASK_1 completed (2026-06-11) — monorepo scaffold, both packages build, pushed to GitHub
+- TASK_2 completed (2026-06-11) — PKCE utilities in both server and CLI, pushed to GitHub
+- Fixed tsconfig in both packages to include "types": ["node"] for crypto module resolution
 
