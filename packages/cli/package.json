@@ -1,0 +1,22 @@
+{
+  "name": "@sahil/democli",
+  "version": "0.1.0",
+  "description": "OAuth 2.0 + PKCE demo CLI tool",
+  "bin": {
+    "democli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "prepare": "tsc"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.15.6",
+    "typescript": "^5.4.5"
+  }
+}

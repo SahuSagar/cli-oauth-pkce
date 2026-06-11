@@ -1,0 +1,9 @@
+{
+  "name": "cli-oauth-pkce",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev:server": "pnpm --filter democli-server dev",
+    "dev:cli": "pnpm --filter @sahil/democli dev"
+  }
+}
