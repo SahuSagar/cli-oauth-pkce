@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authorize — democli</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #e8e8e8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .app-icon {
+      width: 48px;
+      height: 48px;
+      background: #2563eb;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .scopes {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 28px;
+    }
+
+    .scopes p {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .scope-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 6px;
+    }
+
+    .scope-item:last-child { margin-bottom: 0; }
+
+    .scope-item::before {
+      content: '✓';
+      color: #22c55e;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 7px;
+      color: #e8e8e8;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input:focus { border-color: #2563eb; }
+
+    .error {
+      background: #2a1010;
+      border: 1px solid #5a2020;
+      color: #f87171;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .error.visible { display: block; }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 11px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 4px;
+    }
+
+    button[type="submit"]:hover { background: #1d4ed8; }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="app-icon">⚡</div>
+    <h1>Authorize democli</h1>
+    <p class="subtitle">democli is requesting access to your account</p>
+
+    <div class="scopes">
+      <p>This app will be able to</p>
+      <div class="scope-item">Read your profile information</div>
+      <div class="scope-item">Read your email address</div>
+    </div>
+
+    <form method="POST" action="/oauth/approve">
+      <div class="error {{errorClass}}">{{errorMessage}}</div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value="{{email}}"
+          placeholder="sahil@demo.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="••••••••"
+          required
+          autocomplete="current-password"
+        />
+      </div>
+
+      <!-- PKCE + OAuth params passed through as hidden fields -->
+      <input type="hidden" name="code_challenge" value="{{code_challenge}}" />
+      <input type="hidden" name="state" value="{{state}}" />
+      <input type="hidden" name="redirect_uri" value="{{redirect_uri}}" />
+      <input type="hidden" name="client_id" value="{{client_id}}" />
+
+      <button type="submit">Approve & Continue</button>
+    </form>
+
+    <p class="footer">This is a demo OAuth server. Credentials: sahil@demo.com / demo1234</p>
+  </div>
+</body>
+</html>
