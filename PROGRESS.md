@@ -13,7 +13,7 @@ This file tracks the status of all tasks in the cli-oauth-pkce project. Each row
 | TASK_2 | Implement PKCE Utilities | `DONE` | **HIGH** | 1.5 | TASK_1 | Committed: 4843b73 |
 | TASK_3 | Auth Code Store & JWT Utilities | `DONE` | **HIGH** | 2 | TASK_1 | Committed: ff4a7ed |
 | TASK_4 | Server Authorization Endpoint | `DONE` | **HIGH** | 2 | TASK_1, TASK_3 | Committed: 74f958a |
-| TASK_5 | Server Approval Endpoint | `TODO` | **HIGH** | 1.5 | TASK_1, TASK_3, TASK_4 | Blocking: TASK_6 |
+| TASK_5 | Server Approval Endpoint | `DONE` | **HIGH** | 1.5 | TASK_1, TASK_3, TASK_4 | Committed: 3c81926 |
 | TASK_6 | Server Token Exchange Endpoint | `TODO` | **HIGH** | 2 | TASK_1, TASK_2, TASK_3, TASK_5 | Core OAuth logic; critical for CLI |
 | TASK_7 | Server Protected API Endpoint | `TODO` | **HIGH** | 1.5 | TASK_1, TASK_3, TASK_6 | Used by CLI whoami command |
 | TASK_8 | Server Entry Point & Express Setup | `TODO` | **HIGH** | 1.5 | TASK_1, TASK_4, TASK_5, TASK_6, TASK_7 | Integrates all server routes |
@@ -85,4 +85,5 @@ This file tracks the status of all tasks in the cli-oauth-pkce project. Each row
 - Fixed tsconfig in both packages to include "types": ["node"] for crypto module resolution
 - TASK_3 completed (2026-06-11) — auth code store, JWT utilities, demo user added to server
 - TASK_4 completed (2026-06-11) — authorize endpoint + consent page, all validations verified
+- TASK_5 completed (2026-06-11) — approve endpoint, 302 redirect with code+state, error page on bad creds
 
