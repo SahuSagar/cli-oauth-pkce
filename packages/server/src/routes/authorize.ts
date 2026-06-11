@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import fs from 'fs';
-import path from 'path';
+import { renderConsent } from '../lib/render';
 
 const CLIENT_ID = process.env.CLIENT_ID || 'democli';
 const ALLOWED_HOST = '127.0.0.1';
@@ -12,15 +11,6 @@ function isAllowedRedirectUri(uri: string): boolean {
   } catch {
     return false;
   }
-}
-
-function renderConsent(vars: Record<string, string>): string {
-  const templatePath = path.join(__dirname, '../views/consent.html');
-  let html = fs.readFileSync(templatePath, 'utf-8');
-  for (const [key, value] of Object.entries(vars)) {
-    html = html.replaceAll(`{{${key}}}`, value);
-  }
-  return html;
 }
 
 export function authorizeHandler(req: Request, res: Response): void {

@@ -5,3 +5,7 @@ export function verifyPKCE(verifier: string, storedChallenge: string): boolean {
   const challenge = hash.toString('base64url');
   return challenge === storedChallenge;
 }
+
+export function generateSecureToken(): string {
+  return crypto.randomBytes(32).toString('base64url');
+}
